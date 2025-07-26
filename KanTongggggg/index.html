@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ก้านตอง!!!!!!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="closed-envelope" class="envelope-container">
+        <div class="envelope">
+            <div class="flap"></div>
+            <div class="body"></div>
+            <div class="sticker">💖</div>
+        </div>
+        <p class="instruction-text">คลิกที่กล่องจดหมายเพื่อเปิด</p>
+    </div>
+
+    <div id="main-content" class="container hidden">
+        <h1>ถึง ก้านตอง 💖</h1>
+        <p>
+            เราก็คุยกันมาสักพักเเล้วเเหละหยอดกันมาเยอะซะด้วยไม่รู้ว่าตอนนี้เรายังจะรู้สึกเหมือนเดิมอยู่มั้ยนะวันนี้พี่เเค่อยากจะทำให้สถานะของเรามันชัดเจนมากขึ้น
+            ทั้งๆที่เราจีบพี่ก่อนเเต่ไม่เป็นไรพี่เป็นฝ่ายขอเราเองได้ถึงพี่จะชอบหยอกชอบล้อเล่นบ่อยๆเเต่รอบนี้พี่ไม่หยอกนะน้องรอบนี้จริงจัง
+            ไม่รู้จะเขียนอะไรเเล้วอะเอาเป็นว่า "เป็นเเฟนกันมั้ยไอเด็ก"
+
+        </p>
+
+        <div class="selection-buttons">
+            <button id="yesButton" class="action-button">เป็น</button>
+            <button id="noButton" class="action-button">ไม่เป็น</button>
+        </div>
+        <div id="responseDisplay"></div>
+    </div>
+
+    <div id="background-media-wrapper" class="hidden">
+        <video autoplay muted loop playsinline id="background-video-left" class="background-media-item">
+            <source src="videos/love_left.mp4" type="video/mp4">
+            
+        </video>
+
+        <img src="images/love.jpg" alt="Background Image" id="background-image" class="background-media-item">
+
+        <video autoplay muted loop playsinline id="background-video-right" class="background-media-item">
+            <source src="videos/love_right.mp4" type="video/mp4">
+            
+        </video>
+    </div>
+
+    <audio id="background-music" loop autoplay> 
+        <source src="audio/song.mp3" type="audio/mpeg">
+        
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

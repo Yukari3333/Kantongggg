@@ -1,0 +1,314 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffe4e1; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+    
+    position: relative;
+    overflow: hidden; 
+}
+
+#background-media-wrapper {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    z-index: -1; 
+    
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 0; 
+
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
+}
+
+#background-media-wrapper:not(.hidden) {
+    opacity: 1; 
+}
+
+.background-media-item {
+    min-width: 0; 
+    min-height: 0; 
+    object-fit: cover; 
+    display: block; 
+    height: 100%; 
+    width: auto; 
+}
+#background-video-left,
+#background-video-right {
+    flex: 1; 
+    max-width: 30%; 
+}
+
+#background-image {
+    flex: 2; 
+    max-width: 40%; 
+}
+
+
+
+.container {
+    background-color: #fff0f5; 
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    min-height: fit-content;
+    flex-shrink: 0;
+    
+    text-align: center;
+    position: relative; 
+    z-index: 0; 
+}
+
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInContent {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: #ff69b4; 
+    font-size: 2.2em; 
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    white-space: nowrap; 
+    text-align: center; 
+    width: 100%; 
+}
+p {
+    color: #8b4513; 
+    font-size: 1.1em; 
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: center; 
+    width: 100%; 
+}
+
+
+.selection-buttons {
+    margin-top: 30px;
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    width: 100%;
+    max-width: 400px;
+}
+
+
+.action-button {
+    background-color: #ff69b4; 
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 120px; 
+}
+
+.action-button:hover {
+    background-color: #ff1493; 
+    transform: translateY(-2px);
+}
+
+
+#responseDisplay {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fce4ec; 
+    border: 1px dashed #ff69b4;
+    border-radius: 10px;
+    color: #ff1493;
+    font-size: 1.1em;
+    display: none; 
+    word-wrap: break-word; 
+    width: 100%; 
+    max-width: 400px; 
+    text-align: center; 
+}
+
+.hidden {
+    display: none; 
+}
+
+.envelope-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 700px; 
+    height: 490px; 
+    cursor: pointer;
+    perspective: 1000px; 
+    transition: transform 0.6s ease-out, opacity 0.5s ease-out; 
+    max-width: 90vw; 
+    max-height: 80vh;
+}
+
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ffb6c1; 
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.6s ease-out;
+    transform-style: preserve-3d; 
+}
+
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    
+    border-left: 350px solid transparent;  
+    border-right: 350px solid transparent; 
+    border-bottom: 245px solid #ff99ac; 
+    border-radius: 10px 10px 0 0;
+    transform-origin: top;
+    transition: transform 0.6s ease-in-out;
+    z-index: 2; 
+}
+
+.envelope .body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: #ffb6c1; 
+    border-radius: 0 0 10px 10px;
+    z-index: 1;
+}
+
+.envelope .sticker {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7.5em;
+    color: #e53935; 
+    z-index: 3; 
+    animation: pulse 1.5s infinite; 
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.instruction-text {
+    color: #8b4513;
+    font-size: 1.1em;
+    margin-top: 20px;
+    animation: bounce 2s infinite; 
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.envelope-open .flap {
+    transform: rotateX(180deg); 
+}
+.envelope-open .sticker {
+    display: none; 
+}
+
+.envelope-container.clicked {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8); 
+    pointer-events: none; 
+}
+
+.display-none {
+    display: none !important; 
+}
+
+@media (max-width: 768px) {
+    #background-media-wrapper {
+        flex-direction: column; 
+        justify-content: flex-start; 
+        align-items: center; 
+    }
+
+    #background-video-left,
+    #background-video-right,
+    #background-image {
+        max-width: 90%; 
+        flex: none; 
+        height: auto; 
+        margin: 10px 0; 
+    }
+
+
+    h1 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .selection-buttons { 
+        flex-direction: column; 
+        gap: 15px; 
+    }
+    .action-button { 
+        padding: 12px 25px;
+        font-size: 1.1em;
+        width: 100%; 
+        max-width: 250px; 
+        margin: 0 auto; 
+    }
+    .envelope-container {
+        width: 450px; 
+        height: 320px; 
+        max-width: 95vw; 
+        max-height: 85vh; 
+    }
+    .envelope .flap {
+        border-left: 225px solid transparent;
+        border-right: 225px solid transparent; 
+        border-bottom: 160px solid #ff99ac; 
+    }
+    .envelope .sticker {
+        font-size: 5.5em; 
+    }
+    .instruction-text {
+        font-size: 0.9em;
+    }
+}
